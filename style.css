@@ -1,0 +1,188 @@
+/* =====================================================================
+   THE HASAN RESTAURANT - style.css
+   Bootstrap 5 does the layout (grid, navbar, cards, buttons).
+   This file only adds: colours, fonts, hero backgrounds and small polish.
+   ===================================================================== */
+
+
+/* ---------- 1. COLOURS AND FONTS ----------
+   Bootstrap "dark theme" is switched on in the HTML (data-bs-theme="dark").
+   Here we replace its default colours with our black + gold look.        */
+[data-bs-theme="dark"] {
+  --gold: #d6a94f;
+  --gold-light: #ecc572;
+
+  --bs-body-bg: #0e0c0a;                 /* page background  */
+  --bs-body-color: #f4ecdc;              /* normal text      */
+  --bs-secondary-color: #aaa190;         /* soft grey text   */
+  --bs-warning: #d6a94f;                 /* "warning" = gold */
+  --bs-warning-rgb: 214, 169, 79;        /* used by .text-warning, .bg-warning */
+  --bs-body-font-family: 'Hanken Grotesk', system-ui, -apple-system, 'Segoe UI', Arial, sans-serif;
+}
+
+/* Headings and the logo use the serif font */
+h1, h2, h3, h4, h5, h6,
+.display-1, .display-2, .display-3, .display-4, .display-5, .display-6,
+.navbar-brand {
+  font-family: 'Fraunces', Georgia, 'Times New Roman', serif;
+}
+
+
+/* ---------- 2. BUTTONS ----------
+   Re-colour Bootstrap's yellow "warning" buttons to our gold.            */
+.btn-warning {
+  --bs-btn-color: #1a1307;
+  --bs-btn-bg: var(--gold);
+  --bs-btn-border-color: var(--gold);
+  --bs-btn-hover-color: #1a1307;
+  --bs-btn-hover-bg: var(--gold-light);
+  --bs-btn-hover-border-color: var(--gold-light);
+  --bs-btn-active-color: #1a1307;
+  --bs-btn-active-bg: var(--gold-light);
+  --bs-btn-active-border-color: var(--gold-light);
+}
+
+.btn-outline-warning {
+  --bs-btn-color: var(--gold-light);
+  --bs-btn-border-color: var(--gold);
+  --bs-btn-hover-color: #1a1307;
+  --bs-btn-hover-bg: var(--gold);
+  --bs-btn-hover-border-color: var(--gold);
+  --bs-btn-active-color: #1a1307;
+  --bs-btn-active-bg: var(--gold);
+  --bs-btn-active-border-color: var(--gold);
+}
+
+
+/* ---------- 3. NAVIGATION BAR ----------
+   No hamburger button (that needs JavaScript). On small phones the links
+   simply wrap under the logo.                                            */
+.site-nav {
+  --bs-navbar-color: #f4ecdc;
+  --bs-navbar-hover-color: var(--gold-light);
+  --bs-navbar-active-color: var(--gold-light);
+  --bs-navbar-brand-color: #f4ecdc;
+  --bs-navbar-brand-hover-color: #f4ecdc;
+
+  background: rgba(14, 12, 10, 0.94);
+  border-bottom: 1px solid rgba(214, 169, 79, 0.3);
+}
+
+.site-nav .container {
+  flex-wrap: wrap;            /* let the links drop to a second line on phones */
+  row-gap: 0.25rem;
+}
+
+.site-nav .navbar-brand span {
+  color: var(--gold);         /* the word "Hasan" in gold */
+}
+
+
+/* ---------- 4. HERO (big banner at the top of each page) ----------
+   Each page picks its own photo with one extra class below.
+   The dark gradient is laid over the photo so the text stays readable.   */
+.hero {
+  min-height: 45vh;
+  background-size: cover;
+  background-position: center;
+  background-image:
+    linear-gradient(90deg, rgba(14, 12, 10, 0.85) 0%, rgba(14, 12, 10, 0.35) 100%),
+    var(--photo);
+}
+
+.hero-big {
+  min-height: 85vh;           /* the home page banner is taller */
+}
+
+.hero-home    { --photo: url('Moody Modern Restaurant Interior.png'); }
+.hero-menu    { --photo: url('menu full.png'); }
+.hero-story   { --photo: url('https://images.unsplash.com/photo-1579027989536-b7b1f875659b?w=1600&auto=format&fit=crop&q=70'); }
+.hero-gallery { --photo: url('Moody Modern Restaurant Interior.png'); }
+.hero-contact { --photo: url('contact-banner.jpg'); }
+
+.hero h1 {
+  max-width: 14ch;            /* keeps the big heading from stretching too wide */
+}
+
+
+/* ---------- 5. SECTIONS AND INFO STRIP ---------- */
+.section-alt {
+  background: #15120f;        /* slightly lighter band behind some sections */
+  border-top: 1px solid rgba(244, 236, 220, 0.08);
+  border-bottom: 1px solid rgba(244, 236, 220, 0.08);
+}
+
+.info-strip {
+  background: #15120f;
+  border-bottom: 1px solid rgba(214, 169, 79, 0.3);
+}
+
+.section-title {
+  max-width: 40rem;           /* keeps section headings from stretching too wide */
+}
+
+.link-gold {
+  color: var(--gold-light);
+  text-underline-offset: 6px;
+}
+
+
+/* ---------- 6. CARDS AND PHOTOS ---------- */
+.card {
+  --bs-card-bg: #1a1612;
+  --bs-card-border-color: rgba(244, 236, 220, 0.1);
+  overflow: hidden;           /* so photos follow the rounded corners */
+}
+
+.dish-card:hover {
+  border-color: var(--gold);
+}
+
+/* Photos zoom in a little when the mouse is over them (CSS only) */
+.zoom {
+  overflow: hidden;
+  border-radius: 0.5rem;
+}
+.zoom img {
+  transition: transform 0.4s ease;
+}
+.zoom:hover img {
+  transform: scale(1.05);
+}
+.card .zoom {
+  border-radius: 0;           /* inside a card the card already rounds it */
+}
+
+.value-card {
+  border-top: 2px solid var(--gold);
+}
+
+/* "Your table is waiting" box */
+.cta-box {
+  background: #1a1612;
+  border: 1px solid rgba(214, 169, 79, 0.3);
+}
+
+
+/* ---------- 7. FORM (contact page) ---------- */
+.form-control:focus {
+  border-color: var(--gold-light);
+  box-shadow: 0 0 0 0.25rem rgba(214, 169, 79, 0.25);
+}
+
+.map {
+  width: 100%;
+  height: 260px;
+  border: 0;
+  border-radius: 0.5rem;
+}
+
+
+/* ---------- 8. FOOTER ---------- */
+.site-footer {
+  background: #15120f;
+  border-top: 1px solid rgba(214, 169, 79, 0.3);
+}
+.site-footer a {
+  text-decoration: none;
+}
